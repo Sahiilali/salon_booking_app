@@ -1,0 +1,79 @@
+{% extends 'booking/base.html' %}
+
+{% block content %}
+<style>
+    .success-card {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        display: inline-block;
+        max-width: 500px;
+        width: 100%;
+        margin-top: 30px;
+    }
+    .icon-check {
+        font-size: 60px;
+        color: #28a745;
+        margin-bottom: 20px;
+    }
+    .ticket-info {
+        background: #fff5f5;
+        border-left: 5px solid #ff4d4d;
+        padding: 20px;
+        margin: 25px 0;
+        text-align: left;
+    }
+    .ticket-info p {
+        margin: 8px 0;
+        font-size: 16px;
+        color: #333;
+    }
+    .btn-group {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 25px;
+    }
+    .btn-main {
+        background: #ff4d4d;
+        color: white;
+        padding: 12px 25px;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    .btn-secondary {
+        background: #333;
+        color: white;
+        padding: 12px 25px;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+    .btn-main:hover { background: #e63939; }
+</style>
+
+<div style="text-align: center; padding: 20px;">
+    <div class="success-card">
+        <div class="icon-check">✔</div>
+        <h1 style="color: #333; margin-bottom: 10px;">Booking Confirmed!</h1>
+        <p style="color: #666; font-size: 17px;">Thank you for choosing our services. Your appointment has been scheduled.</p>
+        
+        <div class="ticket-info">
+            <p><strong>Service:</strong> {{ service_name }}</p>
+            <p><strong>Date:</strong> {{ appointment.date }}</p>
+            <p><strong>Time Slot:</strong> {{ appointment.time_slot }}</p>
+            <p style="font-size: 13px; color: #888; margin-top: 10px; border-top: 1px dashed #ccc; padding-top: 10px;">
+                Customer: {{ request.user.username }}
+            </p>
+        </div>
+
+        <div class="btn-group">
+            <a href="/" class="btn-secondary">Return Home</a>
+            <a href="{% url 'my_bookings' %}" class="btn-main">My Bookings</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

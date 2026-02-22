@@ -1,0 +1,29 @@
+{% extends 'booking/base.html' %}
+{% block content %}
+<div style="max-width: 500px; margin: 40px auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center;">
+    <h2 style="color: #333;">Select Your Slot</h2>
+    <p style="color: #777;">Booking for: <strong>{{ service.name }}</strong></p>
+    
+    <form method="post" style="text-align: left; margin-top: 20px;">
+        {% csrf_token %}
+        
+        <div style="margin-bottom: 20px;">
+            <label style="font-weight: 600; display: block; margin-bottom: 8px;">Pick a Date:</label>
+            {{ form.date }}
+        </div>
+
+        <div style="margin-bottom: 25px;">
+            <label style="font-weight: 600; display: block; margin-bottom: 8px;">Pick a Time:</label>
+            {{ form.time_slot }}
+        </div>
+
+        <button type="submit" style="width: 100%; background: #ff4d4d; color: white; border: none; padding: 14px; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer;">
+            Confirm My Slot
+        </button>
+    </form>
+</div>
+
+<style>
+    input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+</style>
+{% endblock %}

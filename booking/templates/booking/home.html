@@ -1,0 +1,23 @@
+{% extends 'booking/base.html' %}
+
+{% block content %}
+<div style="text-align: center; padding-top: 20px;">
+    <h1>Welcome to Our Premium Salon</h1>
+    <p>Experience the best grooming services in town. Book your slot today!</p>
+    
+    <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 40px;">
+        {% for s in services %}
+        <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); width: 280px; border-top: 6px solid #ff4d4d; transition: 0.3s;">
+            <h3 style="color: #333; margin-bottom: 10px;">{{ s.name|title }}</h3>
+            <p style="font-size: 22px; color: #ff4d4d; font-weight: 700;">₹{{ s.price }}</p>
+            <p style="color: #666; font-size: 14px; margin-bottom: 20px;">🕒 {{ s.duration_minutes }} Minutes Session</p>
+            <a href="{% url 'book_appointment' s.id %}" style="background: #ff4d4d; color: white; padding: 12px 25px; text-decoration: none; border-radius: 8px; display: inline-block; font-weight: 500;">Book Now</a>
+        </div>
+        {% empty %}
+        <div style="background: #fff3f3; padding: 20px; border-radius: 10px; color: #d9534f;">
+            Admin panel mein services add karein.
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

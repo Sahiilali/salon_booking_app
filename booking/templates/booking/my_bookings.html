@@ -1,0 +1,22 @@
+{% extends 'booking/base.html' %}
+
+{% block content %}
+<div style="max-width: 800px; margin: auto; padding: 20px;">
+    <h2 style="color: #333; border-bottom: 2px solid #ff4d4d; padding-bottom: 10px;">Meri Bookings</h2>
+    
+    {% if appointments %}
+        {% for appt in appointments %}
+        <div style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 15px; border-left: 5px solid #ff4d4d;">
+            <h3 style="margin: 0; color: #ff4d4d;">{{ appt.service.name }}</h3>
+            <p style="margin: 5px 0; color: #555;"><strong>Date:</strong> {{ appt.date }}</p>
+            <p style="margin: 5px 0; color: #555;"><strong>Time:</strong> {{ appt.time_slot }}</p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p style="text-align: center; color: #777; margin-top: 30px;">Aapne abhi tak koi booking nahi ki hai.</p>
+        <div style="text-align: center;">
+            <a href="/" style="color: #ff4d4d; font-weight: bold;">Abhi Book Karein</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

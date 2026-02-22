@@ -1,0 +1,63 @@
+{% extends 'booking/base.html' %}
+
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; min-height: 80vh;">
+    <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 100%; max-width: 450px; border-top: 6px solid #ff4d4d;">
+        
+        <h2 style="color: #333; font-size: 28px; margin-bottom: 10px; text-align: center;">Join Our Salon</h2>
+        <p style="color: #777; text-align: center; margin-bottom: 30px;">Create an account to book your luxury session</p>
+
+        <form method="post" style="text-align: left;">
+            {% csrf_token %}
+            
+            {% for field in form %}
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; font-weight: 600; color: #555; margin-bottom: 8px;">{{ field.label }}</label>
+                    <div class="input-wrapper">
+                        {{ field }}
+                    </div>
+                </div>
+            {% endfor %}
+
+            <button type="submit" style="width: 100%; background: #ff4d4d; color: white; border: none; padding: 14px; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; transition: 0.3s; margin-top: 10px;">
+                Create Account
+            </button>
+        </form>
+
+        <p style="text-align: center; margin-top: 25px; color: #666;">
+            Already have an account? <a href="/accounts/login/" style="color: #ff4d4d; text-decoration: none; font-weight: 600;">Login here</a>
+        </p>
+    </div>
+</div>
+
+<style>
+    /* 1. Yeh extra kachra saaf karne ke liye zaroori hai */
+    ul.errorlist + br, small, .helptext, form ul, form span.helptext {
+        display: none !important;
+    }
+
+    /* 2. Input boxes ko sundar banane ke liye */
+    input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-size: 14px;
+        transition: 0.3s;
+        margin-bottom: 10px;
+    }
+    input:focus {
+        border-color: #ff4d4d;
+        outline: none;
+        box-shadow: 0 0 8px rgba(255, 77, 77, 0.2);
+    }
+    ul.errorlist {
+        color: #ff4d4d;
+        font-size: 12px;
+        padding-left: 0;
+        list-style: none;
+        margin-top: 5px;
+    }
+</style>
+{% endblock %}
